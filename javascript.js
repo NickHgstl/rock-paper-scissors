@@ -4,8 +4,7 @@ let computerWin = 0;
 let playerWin = 0;
 
 function getRandomInt() {
-    return Math.floor(Math.random() * 3)
-    
+    return Math.floor(Math.random() * 3)  
 }
 
 function getComputerChoiche(){
