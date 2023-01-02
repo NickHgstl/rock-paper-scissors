@@ -2,6 +2,26 @@ let computerChoiche = 3;
 let computerWeapon = "";
 let computerWin = 0;
 let playerWin = 0;
+let playerWeapon = "";
+
+const btnRock = document.querySelector('#btn-rock')
+const btnPaper = document.querySelector('#btn-paper')
+const btnScissors = document.querySelector('#btn-scissors')
+
+btnRock.addEventListener('click',function(e){
+    playerWeapon = "rock"
+    playRound();
+});
+
+btnPaper.addEventListener('click',function(e){
+    playerWeapon = "paper"
+    playRound();
+});
+
+btnScissors.addEventListener('click',function(e){
+    playerWeapon = "scissors"
+    playRound();
+});
 
 function getRandomInt() {
     return Math.floor(Math.random() * 3)  
@@ -21,7 +41,6 @@ function getComputerChoiche(){
 
 function playRound(){
     getComputerChoiche()
-    let playerWeapon = prompt("rock paper or scissors?")
     
     if (computerWeapon == "rock" && playerWeapon == "rock"){
         console.log("rock vs rock: draw")
@@ -66,11 +85,11 @@ function playRound(){
     }
 }
 
-function score(){
+/*function score(){
     for (let i = 0; i < 5; i++){
         playRound()
         console.log(playerWin)
         console.log(computerWin)
     }
 }
-score()
+score()*/
