@@ -3,36 +3,41 @@ let computerWeapon = "";
 let computerWin = 0;
 let playerWin = 0;
 let playerWeapon = "";
+let roundCount = 0;
 
-const btnRock = document.querySelector('#btn-rock')
-const btnPaper = document.querySelector('#btn-paper')
-const btnScissors = document.querySelector('#btn-scissors')
+const btnRock = document.querySelector('#btn-rock');
+const btnPaper = document.querySelector('#btn-paper');
+const btnScissors = document.querySelector('#btn-scissors');
+const div = document.createElement('div');
+    document.body.appendChild(div);
+const p1 = document.createElement('p1');
+    document.body.appendChild(p1);
 
 btnRock.addEventListener('click',function(e){
-    playerWeapon = "rock"
-    playRound();
+    playerWeapon = "rock";
+    score();
 });
 
 btnPaper.addEventListener('click',function(e){
-    playerWeapon = "paper"
-    playRound();
+    playerWeapon = "paper";
+    score();
 });
 
 btnScissors.addEventListener('click',function(e){
-    playerWeapon = "scissors"
-    playRound();
+    playerWeapon = "scissors";
+    score();
 });
 
 function getRandomInt() {
-    return Math.floor(Math.random() * 3)  
+    return Math.floor(Math.random() * 3)
 }
 
 function getComputerChoiche(){
     if (getRandomInt(computerChoiche) == 0)
-        computerWeapon = "rock" 
+        computerWeapon = "rock";
 
     if (getRandomInt(computerChoiche) == 1)
-        computerWeapon = "paper" 
+        computerWeapon = "paper"; 
 
     else if (getRandomInt(computerChoiche) == 2)
         computerWeapon = "scissors"
@@ -43,53 +48,73 @@ function playRound(){
     getComputerChoiche()
     
     if (computerWeapon == "rock" && playerWeapon == "rock"){
-        console.log("rock vs rock: draw")
+        div.textContent = "draw"
+        return div;
     }
 
     if (computerWeapon == "rock" && playerWeapon == "paper"){
-        console.log("paper vs rock: paper wins")
+        div.textContent = "paper vs rock: player wins!";
         playerWin++
+        return div;
     }
     
     if (computerWeapon == "rock" && playerWeapon == "scissors"){
-        console.log("scissors vs rock: rock wins")
+        div.textContent = "scissors vs rock: computer wins!";
         computerWin++
+        return div;
     }
 
     if (computerWeapon == "paper" && playerWeapon == "rock"){
-        console.log("rock vs paper: paper wins")
+        div.textContent = "rock vs paper: computer wins!";
         computerWin++
+        return div;
     }
 
     if (computerWeapon == "paper" && playerWeapon == "paper"){
-        console.log("paper vs paper: draw")
+        div.textContent = "paper vs paper: draw";
+        return div;
     }
 
     if (computerWeapon == "paper" && playerWeapon == "scissors"){
-        console.log("scissors vs paper: scissors wins")
+        div.textContent = "scissors vs paper: player wins!";
         playerWin++
+        return div;
     }
 
     if (computerWeapon == "scissors" && playerWeapon == "rock"){
-        console.log("rock vs scissors: rock wins")
+        div.textContent = "rock vs scissors: player win!";
         playerWin++
+        return div;
     }
 
     if (computerWeapon == "scissors" && playerWeapon == "paper"){
-        console.log("paper vs scissors: scissors wins")
+        div.textContent = "paper vs scissors: computer wins!"
         computerWin++
+        return div;
     }
 
     if (computerWeapon == "scissors" && playerWeapon == "scissors"){
-        console.log("scissors vs scissors: draw")
+        div.textContent = "scissors vs scissors: draw"
+        return div;
     }
 }
-
-/*function score(){
-    for (let i = 0; i < 5; i++){
-        playRound()
-        console.log(playerWin)
-        console.log(computerWin)
+function score(){
+    playRound();
+        if ( playerWin == 5){
+            p1.textContent = (`${playerWin} - ${computerWin}"game over!";`)
+            playerWin == 0;
+            computerWin == 0;
+            return p1;
+    }
+        if ( computerWin == 5){
+        p1.textContent = (`${playerWin} - ${computerWin}"game over!";`)
+        playerWin == 0;
+        computerWin == 0;
+        return p1;
+        }
+        
+        else {
+            p1.textContent = (`${playerWin} - ${computerWin}  "next round!";`)
+            return p1;
     }
 }
-score()*/
